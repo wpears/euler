@@ -1,0 +1,10 @@
+for(var c=335; c<998; c++){
+  var rem = 1000-c;
+  var b= rem > c?c-1:rem-1;
+  var a = rem-b;
+  while(a<b){
+    if( a*a+b*b==c*c) console.log(a,b,c,a*b*c)
+    b--;
+    a++;
+  }
+}

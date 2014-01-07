@@ -1,0 +1,12 @@
+
+function getDivisors(numb){
+  var divs=[];
+  for(var i=1,rt=Math.sqrt(numb); i<=rt; i++){
+    var curr=numb/i;
+    if(curr>>0===curr){
+      divs[divs.length]=i;
+      if(i !== curr) divs[divs.length]=curr;
+    }
+  }
+  return divs;
+}

@@ -1,0 +1,8 @@
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+Easy. No programming. the LCM of a range of numbers is the product of the prime factors of the range to their highest multiple... so for 1-20 it is all the primes (11^1, eg) times 3^2 times 2^4. Since these numbers have a greater quantity of these primes than any other number in the set, they encompass the other numbers' requirements
+
+Simply put, the LCM must have in its prime factorization the prime factorization of each number in the range individually, but no more.
+2 2 2 2 3 3 5 7 11 13 17 19

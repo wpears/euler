@@ -1,0 +1,17 @@
+function sieve(n){
+  if(n>Math.pow(2,32)-1)throw new Error("N too large. Must fit in 32bits.")
+  var arr=new Array(n),i=2,primes=[];
+  while(i<=n){
+    if(!arr[i]){
+      primes[primes.length]=i;
+      for(var j=i*2;j<=n;j+=i){
+        arr[j]=1;
+      }
+    }
+    i++;
+  }
+  return primes;
+}
+//under 4 billion
+
+sieve(2000000).reduce(function(a,b){return a+b;})
