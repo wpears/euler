@@ -1,0 +1,44 @@
+function build(num){
+  var graph={};
+  for(var i=0;i<=num;i++){
+    for(var j=0;j<=num;j++){
+      var paths=[];
+      if(i<num) paths.push((i+1)+','+j);
+      if(j<num) paths.push(i+','+(j+1));
+      graph[i+','+j]={i:i,j:j,count:0,nodes:paths};
+    }
+  }
+  graph[num+','+num].count=1;
+  return graph;
+}
+
+function walkNodes(node){
+  node.nodes.forEach(function(v){
+    node.count +=graph[v].count;
+  })
+  
+ if(node.i > 0) queue.push(graph[(node.i-1)+','+node.j])
+ else{
+   if(node.j > 0) queue.push(graph[num+','+(node.j-1)])
+   else return console.log(node.count);
+   }
+walkNodes(queue.shift())
+}
+
+
+var num = 20;
+var queue = [];
+var graph = build(num);
+walkNodes(graph[num+','+num]);
+
+
+//This is ugly. Look at the below. Don't need to build anything. Connections in the graph aren't needed because they are contstant
+
+
+/*for(int i =1;i<=n;i++) {
+  for(int j=1;j<=n;j++) {
+    matrix[i][j] = matrix[i][j-1] + matrix[i-1][j];
+  }
+}*/
+
+//Oh dear. 40 choose 20... Think of it as total permutations  dividing out the permutations of rights and permuations of downs. 40!/(20!*20!)
