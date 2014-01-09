@@ -1,0 +1,9 @@
+function reduceString(str,fn, start){
+  var currVal = start;
+  if(currVal !== undefined) currVal = fn(currVal,str[0]);
+  else currVal = str[0]
+  for(var i =1; i <str.length; i++){
+  currVal = fn(currVal,str[i]); 
+  }
+  return currVal;
+}

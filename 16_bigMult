@@ -5,6 +5,7 @@ function digitSum(str){
 function bigPow(b,p){
   var start = 1;
   var tot = b;
+  if(p>2) return bigPow(bigPow(b,p/2),2) 
   while (start < p){
     tot = bigMult(tot,b)
     start++;
