@@ -1,0 +1,64 @@
+function transition(dateArr){
+  var month=dateArr[0];
+  var day = dateArr[1];
+  var year = dateArr[2];
+  
+  day++
+
+  if(day > getDaysInMonth(month,year)){
+    day = 1;
+    month++;
+    if(month === 13){
+      month = 1;
+      year++;  
+    }
+  }
+  return [month,day,year]
+}
+
+var dim={
+  1:31,
+  3:31,
+  4:30,
+  5:31,
+  6:30,
+  7:31,
+  8:31,
+  9:30,
+  10:31,
+  11:30,
+  12:31
+}
+function getDaysInMonth(month,year){
+  if (month === 2){
+    return getFeb(year);
+  }
+  return dim[month];
+}
+
+function getFeb(year){
+  if(year%4 === 0){
+    if(year%100 === 0 && year%400 !== 0){
+      return 28;
+    }else
+      return 29;
+  }else
+    return 28;
+}
+
+/*
+var curr=[12,31,1899]
+while(curr[2]!==1901){
+for(var i=0;i<7;i++)
+curr=transition(curr);}
+[1, 6, 1901]
+*/
+
+var curr=[1, 6, 1901];
+var count=0;
+while(curr[2]!==2001){
+  for(var i=0;i<7;i++)
+    curr=transition(curr);
+  if(curr[1]===1)count++;
+}
+console.log(count);
