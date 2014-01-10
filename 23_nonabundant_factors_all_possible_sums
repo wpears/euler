@@ -1,0 +1,5 @@
+find all abundant numbers under 28112
+find all the numbers under 28123 that these abundant numbers can create.
+loop through integers up to 28123, if it isn't an abundant sum add it to candidate array
+reduce candidate
+
