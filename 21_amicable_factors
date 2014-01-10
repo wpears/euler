@@ -1,0 +1,32 @@
+get factors.
+sum them.
+(do this for all and keep sums in array)
+run through array, checking for amicable.
+if amicable, add just the current to list.
+
+function getDivisorsNotCurr(numb){
+  var divs=[];
+  for(var i=1,rt=Math.sqrt(numb); i<=rt; i++){
+    var curr=numb/i;
+    if(curr>>0===curr){
+      divs[divs.length]=i;
+      if(i !== curr && curr !== numb) divs[divs.length]=curr;
+    }
+  }
+  return divs;
+}
+
+var sums=[0];
+var ami=[];
+function sum(a,b){return a+b;}
+for(var i= 1; i<10000; i++){
+  sums[sums.length]=getDivisorsNotCurr(i).reduce(sum)
+}
+
+for(var i=0; i<10000; i++){
+  var curr = sums[i]
+  if(sums[curr] === i&&curr<10000&&i!==curr){
+    ami[ami.length]=i;
+  }
+}
+console.log(ami.reduce(sum))
