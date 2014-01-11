@@ -1,5 +1,39 @@
-find all abundant numbers under 28112
+/*find all abundant numbers under 28112
 find all the numbers under 28123 that these abundant numbers can create.
 loop through integers up to 28123, if it isn't an abundant sum add it to candidate array
-reduce candidate
+reduce candidate*/
+var abun=[];
+var asums={};
 
+function getDivisorsNotCurr(numb){
+  var divs=[];
+  for(var i=1,rt=Math.sqrt(numb); i<=rt; i++){
+    var curr=numb/i;
+    if(curr>>0===curr){
+      divs[divs.length]=i;
+      if(i !== curr && curr !== numb) divs[divs.length]=curr;
+    }
+  }
+  return divs;
+}
+function sum (a,b){return a+b;}
+for(var i=0; i<28123; i++){
+  var arr=getDivisorsNotCurr(i)
+  var curr=0;
+  if(arr.length)curr=arr.reduce(sum);
+  if (curr > i){
+    abun.push(i);
+  }
+}
+for (var i =0, len=abun.length; i < len; i++){
+  for(var j=i; j <len; j++){
+    asums[abun[i]+abun[j]]=1;
+  }
+}
+
+var candidate=[];
+
+for(var i=1; i<=28123; i++){
+  if(!asums[i]) candidate.push(i);
+}
+console.log(candidate.reduce(sum));
