@@ -1,0 +1,22 @@
+/*doesn't resolve duplicates. pretty slow*/
+function permute(str){
+  var currentArr=[str[0]];
+  for(var i =1;i<str.length;i++){
+    currentArr=insert(currentArr,str[i]);
+  }
+  return currentArr;
+}
+function insert(arr,item){
+  var nextArr=[];
+  var strlen=arr[0].length;
+  for(var i=0, len=arr.length;i<len;i++){
+    var str=arr[i];
+    nextArr.push(item+str);
+    nextArr.push(str+item);
+    for(var j=1;j<strlen;j++){
+      nextArr.push(str.slice(0,j)+item+str.slice(j))
+    }
+  }
+  return nextArr;
+}
+console.log(permute('0123456789').sort()[999999]);
