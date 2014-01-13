@@ -1,2 +1,32 @@
-big mult using fast fib
+var last ='1';
+var curr='1';
+var count =2;
+while(curr.length <1000){
+var temp=curr;
+curr=bigAdd(last,curr);
+last=temp;
+count++;
+}
+console.log(count);
 
+function bigAdd(a,b){
+  a = a.toString();
+  b = b.toString()
+  var res = '';
+  var carry = 0;
+  var ai = a.length-1;
+  var bi = b.length-1;
+  while(ai>=0&&bi>=0){
+    var curr = +a[ai] + +b[bi] + carry;
+    var digit = curr%10;
+    if (curr > 9){
+      carry = 1
+    }else carry = 0;
+    res = digit + res;
+    ai--;
+    bi--;
+  }
+  var rem = a.slice(0,ai+1) + b.slice(0,bi+1);
+  if(carry) rem = bigAdd(rem,carry.toString())
+  return res = rem + res;
+}
