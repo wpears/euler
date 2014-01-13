@@ -1,0 +1,18 @@
+function decDiv(num,denom,dec){
+  var ans='';
+  var count=0;
+  var div=num/denom>>0;
+  var rem=num%denom;
+  ans=ans+div+'.';
+  
+  while(rem!==0&&count<dec){
+    var moveDigit=rem*10;
+    div=moveDigit/denom>>0;
+    rem=moveDigit%denom;
+    if(div>=1)ans+=div;
+    else ans+='0';
+    count++;
+    }
+  if(ans[ans.length-1]==='.') ans=ans.slice(0,-1);
+  return ans;
+}
