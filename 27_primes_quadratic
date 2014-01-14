@@ -1,5 +1,30 @@
 var primes = sieve(1e5);
+var maxLen = 0;
+var maxA;
+var maxB;
+for(var i = -999; i <1000; i++){
+  for(var j=-999;j<1000;j++){
+    var len=primeLength(i,j);
+    if(len>maxLen){
+      maxLen=len;
+      maxA=i;
+      maxB=j;
+    }
+  }
+}
+console.log(maxLen,maxA,maxB,maxA*maxB);
 
+function primeLength(a,b){
+  var n=0;
+  var count=0;
+  while(1){
+    if(!primes[n*n+a*n+b]) return count;
+    else{
+       n++;
+       count++;
+    }
+  }
+}
 function sieve(n){
 	if(n>Math.pow(2,32)-1)throw new Error("N too large. Must fit in 32bits.")
 	var arr=new Array(n),i=2,primes={};
