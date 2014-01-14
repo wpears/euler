@@ -1,3 +1,26 @@
+var max=6;
+var theMax;
+for(var i=2; i<1000;i++){
+  var num=findRepeat(decDiv(1,i,1500));
+  if(num>max){
+    max=num;
+    theMax=i;
+  }
+ }
+ console.log("Answer: %d with a value of %d",theMax,max)
+function findRepeat(str){
+  if(str.length <19)return 0;
+  var start=19;
+  var sameDigits=1;
+  while(sameDigits<10){
+    var curr=str.slice(start,start+sameDigits);
+    var next=str.indexOf(curr,start+1);
+    sameDigits++;
+   }
+   return next-start;
+}
+  
+
 function decDiv(num,denom,dec){
   var ans='';
   var count=0;
