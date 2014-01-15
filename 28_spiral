@@ -1,0 +1,12 @@
+var arr=[];
+
+function addAndGet(start, gap){
+  arr.push(start);
+  if(gap === 1002)return;
+  arr.push(start+gap);
+  arr.push(start+2*gap);
+  arr.push(start+3*gap);
+  addAndGet(start+4*gap,gap+2)
+}
+addAndGet(1,2);
+console.log(arr.reduce(function(a,b){return a+b;}));
