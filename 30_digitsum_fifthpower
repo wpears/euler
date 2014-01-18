@@ -1,0 +1,22 @@
+var res=[];
+var arr=[];
+
+for(var i=0;i<10;i++){
+  var pow = Math.pow(i,5)
+  arr[i]=pow;;
+}
+function sum (a,b){return a+b;}
+
+for(var i=2;i<3.6e5;i++){
+  if(digitSum(i)===i) res.push(i)
+}
+console.log(res,res.reduce(sum))
+
+function digitSum(num){
+  var str=num.toString();
+  var tot = 0
+  for(var i=0;i<str.length;i++){
+    tot+=arr[str[i]];
+  }
+  return tot
+}
