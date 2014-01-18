@@ -7,6 +7,38 @@ remove one of the second smallest coins (or the largest if only 1 coin) and reru
 continue until only using 200 1p
 
 var money = [200,100,50,20,10,5,2,1];
+var coins = {1:0
+            ,2:0
+            ,5:0
+            ,10:0
+            ,20:0
+            ,50:0
+            ,100:0
+            ,200:0
+            }
+var count=0;
+var i=0;
+var sum=0;
+while(coins[1] !== 200){
+  while(sum<200){
+  var coin=money[i];
+    if(sum+coin>200) break;
+    sum+=coin;
+    coins[coin]++;
+  }
+  if(sum === 200){
+    count++;
+    for(var ind=money.length-1;i>-1;ind--){
+    var smallest;
+      if(coins[money[ind]]){
+        if(smallest){
 
+        }else{
+          notFirst=1;
+        }
+      }
+    }
+  }
+}
 
 
