@@ -1,0 +1,12 @@
+sort money
+from largest to smallest:
+add as many coins as possible to be <=2
+move to next largest. repeat.
+continue until 2p (will always occur)
+remove one of the second smallest coins (or the largest if only 1 coin) and rerun with that sum
+continue until only using 200 1p
+
+var money = [200,100,50,20,10,5,2,1];
+
+
+
