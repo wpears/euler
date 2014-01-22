@@ -1,4 +1,4 @@
-sort money
+/*sort money
 from largest to smallest:
 add as many coins as possible to be <=2
 move to next largest. repeat.
@@ -6,39 +6,46 @@ continue until 2p (will always occur)
 remove one of the second smallest coins (or the largest if only 1 coin) and rerun with that sum
 continue until only using 200 1p
 
+
+"add til can't, then move smaller
+TRACK what is being added
+ lowestNotOne
+reduce the first that isn't 1
+then continue with step one"
+*/
+
 var money = [200,100,50,20,10,5,2,1];
-var coins = {1:0
-            ,2:0
-            ,5:0
-            ,10:0
-            ,20:0
-            ,50:0
-            ,100:0
-            ,200:0
+var nextCoin = {2:7
+            ,5:6
+            ,10:5
+            ,20:4
+            ,50:3
+            ,100:2
+            ,200:1
             }
+var lastNums=[];
+var oneCount=0;
 var count=0;
 var i=0;
 var sum=0;
-while(coins[1] !== 200){
+while(1){
   while(sum<200){
   var coin=money[i];
-    if(sum+coin>200) break;
-    sum+=coin;
-    coins[coin]++;
-  }
-  if(sum === 200){
-    count++;
-    for(var ind=money.length-1;i>-1;ind--){
-    var smallest;
-      if(coins[money[ind]]){
-        if(smallest){
-
-        }else{
-          notFirst=1;
-        }
-      }
+    if(sum+coin>200){
+       i++;
+       continue;
     }
+    if(coin !== 1) lastNums.push(coin);
+    else oneCount++;
+    sum+=coin;
   }
+  count++;
+  if(oneCount === 200) break;
+  var last=lastNums.pop();
+  sum-=oneCount;
+  sum-=last;
+  i=nextCoin[last];
+  oneCount=0;
 }
 
-
+console.log(count);
