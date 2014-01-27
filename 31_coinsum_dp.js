@@ -7,10 +7,10 @@ for(var i = 2; i < 201; i++){
     var coin=coins[j];
     if(i < coin) break;
     var index=i-coin;
-    
-    if (coin > index) coin = 'tot';
-    sum+=arr[index][coin];
-    arr[i][coins[j]]=sum;
+    var key = coin;
+    if (coin > index) key = 'tot';
+    sum+=arr[index][key];
+    arr[i][coin]=sum;
   }
   arr[i].tot=sum;
 }
